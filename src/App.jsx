@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import magicImage from "./assets/magic.jpg";
+import backgroundImage from "./assets/obs.jpeg";
+import noSound from "./assets/no.mp3";
+import thatNoSound from "./assets/thatno.mp3";
+import yesSound from "./assets/yes.mp3";
+import oneMoreSound from "./assets/onemore.mp3";
 
 const App = () => {
   const [magicMessage, setMagicMessage] = useState("");
   const [audio, setAudio] = useState(null);
 
-  // MP3 파일 목록
-  const songs = [
-    "src/assets/no.mp3",
-    "src/assets/thatno.mp3",
-    "src/assets/yes.mp3",
-    "src/assets/onemore.mp3",
-  ];
+  // MP3 파일 목록 (import 방식)
+  const songs = [noSound, thatNoSound, yesSound, oneMoreSound];
 
   const triggerMagic = () => {
     const randomIndex = Math.floor(Math.random() * songs.length);
@@ -32,17 +33,17 @@ const App = () => {
       style={{
         textAlign: "center",
         marginTop: "-50px",
-        backgroundImage: "url('src/assets/obs.jpeg')", 
-        backgroundSize: "cover", 
-        backgroundPosition: "center", 
-        height: "750px", 
-        color: "white", 
+        backgroundImage: `url(${backgroundImage})`, // import된 이미지 사용
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "750px",
+        color: "white",
       }}
     >
       <h1>마법의 소라고동</h1>
 
       <img
-        src="src/assets/magic.jpg" 
+        src={magicImage} // import된 이미지 사용
         alt="소라고동"
         onClick={triggerMagic}
         style={{
